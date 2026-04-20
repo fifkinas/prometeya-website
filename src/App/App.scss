@@ -1,0 +1,29 @@
+/* src/App.css */
+:root {
+  --bg-dark: #121212;
+  --bg-card: #1e1e1e;
+  --text-white: #ffffff;
+  --text-dim: #aaaaaa;
+  --accent-blue: #1976d2;
+  --accent-orange: #f57c00;
+  --accent-green: #2e7d32;
+  --accent-red: #d32f2f;
+}
+
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-dark);
+  color: var(--text-white);
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
+  overflow: hidden;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+}

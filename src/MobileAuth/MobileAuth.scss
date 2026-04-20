@@ -1,0 +1,51 @@
+/* src/MobileAuth.css */
+.mobile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.mobile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  max-width: 350px;
+}
+
+.mobile-input {
+  padding: 18px;
+  font-size: 1.1rem;
+  border-radius: 12px;
+  border: 1px solid #444;
+  background-color: #1e1e1e;
+  color: white;
+  outline: none;
+}
+
+.mobile-input:focus { border-color: var(--accent-blue); }
+
+.mobile-submit {
+  padding: 20px;
+  font-size: 1.3rem;
+  background-color: var(--accent-green);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.huge-number {
+  font-size: 5.5rem;
+  font-weight: 900;
+  padding: 15px 45px;
+  background: #1e1e1e;
+  border: 3px solid #333;
+  border-radius: 25px;
+  margin: 20px 0;
+}

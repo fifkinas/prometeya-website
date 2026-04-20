@@ -1,0 +1,91 @@
+/* src/TabletApp.css */
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.qr-container {
+  background-color: white;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 30px;
+}
+
+.role-grid {
+  display: flex;
+  gap: 30px;
+  width: 90%;
+  max-width: 900px;
+  height: 50vh;
+}
+
+.role-square {
+  flex: 1;
+  border: none;
+  border-radius: 24px;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.role-square:active { transform: scale(0.95); }
+.role-solder { background-color: var(--accent-blue); }
+.role-welder { background-color: var(--accent-orange); }
+
+.amount-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 50px;
+}
+
+.circle-btn {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid #444;
+  background: transparent;
+  color: white;
+  font-size: 4rem;
+  cursor: pointer;
+}
+
+.amount-display {
+  font-size: 7rem;
+  font-weight: bold;
+}
+
+.print-btn {
+  width: 80%;
+  max-width: 500px;
+  padding: 35px;
+  font-size: 2.5rem;
+  border: none;
+  border-radius: 15px;
+  background-color: var(--accent-green);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.status-huge-text {
+  font-size: 4.5rem;
+  font-weight: bold;
+}
+
+.status-bar {
+  padding: 8px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+.status-online { background-color: #1b5e20; }
+.status-offline { background-color: #310000; }
