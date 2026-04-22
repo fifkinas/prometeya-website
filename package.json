@@ -12,9 +12,9 @@
   "dependencies": {
     "@sentry/react": "^10.49.0",
     "@sentry/vite-plugin": "^5.2.0",
+    "qrcode.react": "^4.2.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-qr-code": "^2.0.18",
     "react-router-dom": "^7.14.1",
     "sass-loader": "^16.0.7",
     "scss": "^0.2.4"

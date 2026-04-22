@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import TabletApp from '../TabletApp/TableApp.tsx';
+import TabletApp from '../TabletApp/TabletApp.tsx';
 import MobileAuth from '../MobileAuth/MobileAuth.tsx';
 
 export default function App() {

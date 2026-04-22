@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import QRCode from 'react-qr-code';
+import { QRCodeSVG } from 'qrcode.react';
 import type { ServerMessage, AppStep, Role } from '../types.ts';
 import './TabletApp.scss'
 
 // IP бэкенда (FastAPI)
 const WS_URL = 'ws://192.168.0.100:8000/ws';
-// IP фронтенда (React). Vite по умолчанию работает на 5173
+// IP фронтенда (React).
 const FRONTEND_URL = 'http://192.168.0.100:5173';
 
 export default function TabletApp() {
@@ -30,18 +30,17 @@ export default function TabletApp() {
 
   const resetInactivityTimer = useCallback(() => {
     if (inactivityTimerRef.current) clearTimeout(inactivityTimerRef.current);
-    if (currentStep !== 'QR_SCAN' && currentStep !== 'PRINTING') {
-      inactivityTimerRef.current = setTimeout(resetToStart, 30000);
+    if (currentStep !== 'QR_SCAN' && currentStep !== 'PRINTING' && currentStep !== 'RESULT') {
+      inactivityTimerRef.current = setTimeout(resetToStart, 60000);
     }
   }, [currentStep, resetToStart]);
 
   useEffect(() => {
-    window.addEventListener('click', resetInactivityTimer);
+    globalThis.addEventListener('click', resetInactivityTimer);
     resetInactivityTimer();
-    return () => window.removeEventListener('click', resetInactivityTimer);
+    return () => globalThis.removeEventListener('click', resetInactivityTimer);
   }, [resetInactivityTimer]);
 
-  // Мы поменяли анонимную стрелочную функцию () => на именованную function connect()
   const connectWebSocket = useCallback(function connect() {
     const ws = new WebSocket(WS_URL);
     wsRef.current = ws;
@@ -87,7 +86,6 @@ export default function TabletApp() {
 
     ws.onclose = () => {
       setIsConnected(false);
-      // Теперь мы вызываем внутреннее имя connect, а не внешнюю константу!
       setTimeout(connect, 3000);
     };
 
@@ -113,11 +111,23 @@ export default function TabletApp() {
     <div className="app-container">
       {currentStep === 'QR_SCAN' && (
         <div className="screen">
-          <div className="qr-container">
-            {/* Теперь QR код ведет на экран телефона ВНУТРИ нашего React приложения */}
-            <QRCode value={`${FRONTEND_URL}/auth?session=${wsSessionId}`} size={300} />
-          </div>
-          <h2 style={{ color: '#aaa' }}>Отсканируйте код с телефона</h2>
+
+
+          { isConnected ? (
+              <>
+                <div className="qr-container">
+                  <QRCodeSVG value={`${FRONTEND_URL}/auth?session=${wsSessionId}`} size={300} />
+                </div>
+                <h2 style={{ color: '#aaa' }}>Отсканируйте код с телефона</h2>
+              </>
+
+            ) : (
+                <div className="status-huge-text" style={{ color: '#f44336' }}>
+                  ОЖИДАНИЕ СЕРВЕРА...
+                </div>
+          )}
+
+
         </div>
       )}
 
